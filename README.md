@@ -80,13 +80,12 @@ the train.py script can be used to fir the DELWAVE model.
 ```console
 python3 train.py <training dataset name> <number of time steps> <path to base folder>>
 
-% <training dataset name>: The name of the station data which is to be used for training. Options include AA, MB, GD, OB, OB2, OB3.
-%                          If WHOLE is supplied instead the training is conducted on all stations at the same time. This applies if the provided dataset is used.
-%
-% <number of time steps>:  The number of consequitve wind field time steps used for rgeression. 
-%
-% <path to base folder>:   Path to the base folder where the remaining required script files are located.
-
+# <training dataset name>: The name of the station data which is to be used for training. Options include AA, MB, GD, OB, OB2, OB3.
+#                          If WHOLE is supplied instead the training is conducted on all stations at the same time. This applies if the provided dataset is used.
+#
+# <number of time steps>:  The number of consequitve wind field time steps used for rgeression. 
+#
+# <path to base folder>:   Path to the base folder where the remaining required script files are located.
 ```
 
 The train.py script creates a folder named DELWAVEv1.0_results which contains the trained model.
