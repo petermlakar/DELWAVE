@@ -74,7 +74,26 @@ dataset = Dataset(databank, databank.indices, batch_size = 256, importance = Tru
 
 ## Usage
 
-After the training data has be acquired and places in the approriate subdirectory as described in the [Setup](#Setup)
+After the training data has be acquired and places in the approriate subdirectory as described in the [Setup](#Setup) section,
+the train.py script can be used to fir the DELWAVE model.
+
+```console
+python3 train.py <training dataset name> <number of time steps> <path to base folder>
+
+# <training dataset name>: The name of the station data which is to be used for training. Options include AA, MB, GD, OB, OB2, OB3.
+#                          If WHOLE is supplied instead the training is conducted on all stations at the same time. This applies if the provided dataset is used.
+#
+# <number of time steps>:  The number of consequitve wind field time steps used for rgeression. 
+#
+# <path to base folder>:   Path to the base folder where the remaining required script files are located.
+#
+```
 
 ## Example
+
+Usage example when training on all provided stations (<training dataset name> == WHOLE), with 11 time steps used for regression.
+
+``` console
+python3 train.py WHOLE 11 /home/DELWAVE_base TEST_EXAMPLE
+```
 

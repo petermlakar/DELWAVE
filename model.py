@@ -174,6 +174,6 @@ class Model(nn.Module):
                 print(f"{p_name} not in model...")
 
     def get_name(self):
-        return "Model"
+        return "DELWAVEv1.0"
 
 
