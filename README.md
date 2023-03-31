@@ -7,6 +7,12 @@ DEep Learning WAVe Emulating model (DELWAVE) is a convolutional neural network m
 
 ## Requirements
 
+DELWAVE v1.0 requires the external libraries PyTorch and Numpy.
+These can be installed by:
+
+'''conole
+pip3 install numpy torch
+'''
 
 ## Setup
 
