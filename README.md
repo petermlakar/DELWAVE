@@ -3,7 +3,7 @@
 </p>
 
 
-DEep Learning WAVe Emulating (DELWAVE) model is a convolutional neural network model designed for emulating the numerical surface ocean wave model.
+DEep Learning WAVe Emulating model (DELWAVE) is a convolutional neural network model designed for emulating the numerical surface ocean wave model.
 
 ## Setup
 
