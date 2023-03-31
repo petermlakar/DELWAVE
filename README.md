@@ -78,7 +78,7 @@ After the training data has be acquired and places in the approriate subdirector
 the train.py script can be used to fir the DELWAVE model.
 
 ```console
-python3 train.py <training dataset name> <number of time steps> <path to base folder>
+python3 train.py <training dataset name> <number of time steps> <path to base folder>>
 
 # <training dataset name>: The name of the station data which is to be used for training. Options include AA, MB, GD, OB, OB2, OB3.
 #                          If WHOLE is supplied instead the training is conducted on all stations at the same time. This applies if the provided dataset is used.
@@ -89,11 +89,14 @@ python3 train.py <training dataset name> <number of time steps> <path to base fo
 #
 ```
 
+The train.py script creates a folder named DELWAVEv1.0_results which contains the trained model.
+
 ## Example
 
-Usage example when training on all provided stations (<training dataset name> == WHOLE), with 11 time steps used for regression.
+Usage example when training on all provided stations, with 11 time steps used for regression.
 
 ``` console
-python3 train.py WHOLE 11 /home/DELWAVE_base TEST_EXAMPLE
+python3 train.py WHOLE 11 /home/DELWAVE_base
+
 ```
 

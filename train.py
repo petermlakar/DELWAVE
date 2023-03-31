@@ -60,11 +60,10 @@ INIT_MODEL_NAME = ""
 def main():
 
     if len(sys.argv) < 4:
-        print("python3 train.py <training dataset name> <number of time steps> <path to base folder> <OPTIONAL: generated file postfix>")
+        print("python3 train.py <training dataset name> <number of time steps> <path to base folder>")
         exit()
 
     dataset_name = sys.argv[1]
-    postfix = sys.argv[4] if len(sys.argv) == 5 else ""
 
     dmap = {"AA": 0,
             "MB": 1,
@@ -153,7 +152,7 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate, weight_decay = 1e-6)
 
     OUTPUT_TIMESTAMP = str(datetime.now()).replace(" ", "_").split(":")[0]
-    OUTPUT_BASE = join(BASE, f"{model.get_name()}_{learning_rate}_{time_steps}_{batch_size}_{OUTPUT_TIMESTAMP}_{dataset_name}_{postfix}")
+    OUTPUT_BASE = join(BASE, f"{model.get_name()}_results")
     if not exists(OUTPUT_BASE):
         mkdir(OUTPUT_BASE)
 
@@ -198,13 +197,8 @@ def main():
         dataset_vld.on_epoch_end()
 
         if train_loss < best_train_loss:
-            
             best_train_loss = train_loss
 
-            x, _ = dataset_trn.__getitem__(0)
-
-            tm = torch.jit.trace(model, x)
-            torch.jit.save(tm, join(OUTPUT_BASE, f"{model.get_name()}_train"))
 
         if test_loss < best_test_loss:
 
@@ -213,7 +207,7 @@ def main():
             x, _ = dataset_trn.__getitem__(0)
 
             tm = torch.jit.trace(model, x)
-            torch.jit.save(tm, join(OUTPUT_BASE, f"{model.get_name()}_test")) 
+            torch.jit.save(tm, join(OUTPUT_BASE, f"{model.get_name()}"))   
 
         train_loss_buffer[e] = train_loss/len(dataset_trn)
         test_loss_buffer[e] = test_loss/len(dataset_vld)
