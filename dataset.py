@@ -1,5 +1,4 @@
 import torch
-from torchvision.transforms.functional import rotate
 
 import numpy as np
 
