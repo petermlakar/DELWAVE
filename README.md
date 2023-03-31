@@ -74,5 +74,7 @@ dataset = Dataset(databank, databank.indices, batch_size = 256, importance = Tru
 
 ## Usage
 
+After the training data has be acquired and places in the approriate subdirectory as described in the [Setup](#Setup)
+
 ## Example
 
