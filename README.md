@@ -96,7 +96,6 @@ Usage example when training on all provided stations, with 11 time steps used fo
 
 ``` console
 python3 train.py WHOLE 11 /path/to/DELWAVE/base/folder
-
 ```
 
 After the training is complete you can find a new folder named DELWAVEv1.0 inside the base folder.
@@ -105,6 +104,7 @@ To produce the test results for any of the stations used during training, execut
 
 ``` console
 python3 test.py <AA or GD or MB or ...> DELWAVEv1.0 /path/to/DELWAVE/base/folder
-
 ```
 
+The test.py script will produce the DELWAVE prediction statistics for the test dataset of choice, while also outputing the prediction arrays
+for the mean wave period, significant wave height, and mean wave direction.
