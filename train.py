@@ -43,11 +43,11 @@ from spatial import spatial_map
 #                                               |
 #                                               --- data
 #                                                    |
-#                                                    --- trn_X.npy
+#                                                    --- training_wind_field.npy
 #                                                    |
-#                                                    --- trn_Y.npy
+#                                                    --- training_waves.npy
 #                                                    |
-#                                                    --- trn_T.npy
+#                                                    --- training_time.npy
 #                                                    |
 #                                                    --- normalization.npy
 

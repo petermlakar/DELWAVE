@@ -35,17 +35,17 @@ base folder
 	|
 	--- data
 	    |
-	    --- trn_X.npy
+	    --- training_wind_field.npy
 	    |
-	    --- trn_Y.npy
+	    --- training_waves.npy
 	    |
-	    --- trn_T.npy
+	    --- training_time.npy
 	    |
 	    --- normalization.npy
 
 ```
 
-The dataset files in the subfolder data can be obtained at:
+The training and test data files can be found on [Zenodo]{https://doi.org/10.5281/zenodo.7816888}.
 
 ### Custom model training loop
 
