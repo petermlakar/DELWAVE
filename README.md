@@ -95,7 +95,16 @@ The train.py script creates a folder named DELWAVEv1.0_results which contains th
 Usage example when training on all provided stations, with 11 time steps used for regression.
 
 ``` console
-python3 train.py WHOLE 11 /home/DELWAVE_base
+python3 train.py WHOLE 11 /path/to/DELWAVE/base/folder
+
+```
+
+After the training is complete you can find a new folder named DELWAVEv1.0 inside the base folder.
+This folder contains the trained DELWAVE model.
+To produce the test results for any of the stations used during training, execute:
+
+``` console
+python3 test.py <AA or GD or MB or ...> DELWAVEv1.0 /path/to/DELWAVE/base/folder
 
 ```
 

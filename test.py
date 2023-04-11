@@ -40,9 +40,7 @@ def main():
 
     dataset_name = sys.argv[1]
     BASE = sys.argv[3]
-    MODEL_NAME = join(BASE,
-            sys.argv[2],
-            "Model_test")
+    MODEL_NAME = join(BASE, sys.argv[2], "Model")
 
     dmap = {"AA": 0,
             "MB": 1,

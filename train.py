@@ -199,7 +199,7 @@ def main():
             x, _ = dataset_trn.__getitem__(0)
 
             tm = torch.jit.trace(model, x)
-            torch.jit.save(tm, join(OUTPUT_BASE, "DELWAVE"))   
+            torch.jit.save(tm, join(OUTPUT_BASE, "Model"))   
 
         train_loss_buffer[e] = train_loss/len(dataset_trn)
         valid_loss_buffer[e] = valid_loss/len(dataset_vld)
