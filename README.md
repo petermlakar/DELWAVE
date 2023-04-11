@@ -45,7 +45,7 @@ base folder
 
 ```
 
-The training and test data files can be found on [Zenodo]{https://doi.org/10.5281/zenodo.7816888}.
+The training and test data files can be found on [Zenodo](https://doi.org/10.5281/zenodo.7816888).
 
 ### Custom model training loop
 
