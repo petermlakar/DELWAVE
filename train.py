@@ -156,7 +156,7 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate, weight_decay = 1e-6)
 
     OUTPUT_TIMESTAMP = str(datetime.now()).replace(" ", "_").split(":")[0]
-    OUTPUT_BASE = join(BASE, f"{model.get_name()}_results")
+    OUTPUT_BASE = join(BASE, "DELWAVEv1.0")
     if not exists(OUTPUT_BASE):
         mkdir(OUTPUT_BASE)
 
@@ -211,7 +211,7 @@ def main():
             x, _ = dataset_trn.__getitem__(0)
 
             tm = torch.jit.trace(model, x)
-            torch.jit.save(tm, join(OUTPUT_BASE, f"{model.get_name()}"))   
+            torch.jit.save(tm, join(OUTPUT_BASE, "DELWAVE"))   
 
         train_loss_buffer[e] = train_loss/len(dataset_trn)
         test_loss_buffer[e] = test_loss/len(dataset_vld)
@@ -220,8 +220,8 @@ def main():
 
         #scheduler.step(test_loss)
 
-        np.savetxt(join(OUTPUT_BASE, f"{model.get_name()}_complete_train_loss"), train_loss_buffer[0:e + 1].numpy())
-        np.savetxt(join(OUTPUT_BASE, f"{model.get_name()}_complete_test_loss"),  test_loss_buffer[0:e + 1].numpy())
+        np.savetxt(join(OUTPUT_BASE, "Training_loss"), train_loss_buffer[0:e + 1].numpy())
+        np.savetxt(join(OUTPUT_BASE, "Validation_loss"),  test_loss_buffer[0:e + 1].numpy())
 
         #########################################################################
         # Early stopping
