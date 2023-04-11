@@ -59,6 +59,8 @@ INIT_MODEL_NAME = ""
 
 def main():
 
+    CUDA = torch.cuda.is_available()
+
     if len(sys.argv) < 4:
         print("python3 train.py <training dataset name> <number of time steps> <path to base folder>")
         exit()
@@ -76,7 +78,7 @@ def main():
 
     learning_rate = 1e-5
     time_steps = int(sys.argv[2])
-    batch_size = 50 # Batch size is multiplied by the number of stations
+    batch_size = 2 # Batch size is multiplied by the number of stations
     epochs = 5000
     tolerance = 5000
 
@@ -85,9 +87,9 @@ def main():
     BASE = sys.argv[3]
     BASE_TR = join(BASE, "data")
 
-    X = np.load(join(BASE_TR, "trn_X.npy"))
-    Y = np.load(join(BASE_TR, "trn_Y.npy"))
-    T = np.load(join(BASE_TR, "trn_T.npy"))
+    X = np.load(join(BASE_TR, "training_wind_field.npy"))
+    Y = np.load(join(BASE_TR, "training_waves.npy"))
+    T = np.load(join(BASE_TR, "training_time.npy"))
 
     S_AA = spatial_map("AA")
     S_MB = spatial_map("MB")
@@ -124,7 +126,7 @@ def main():
 
     #########################################################################
 
-    databank = Databank(X, Y, S, time_steps = time_steps, normalize = np.load(join(BASE_TR, "normalization.npy")), station_indices = station_indices, cuda = True)
+    databank = Databank(X, Y, S, time_steps = time_steps, normalize = np.load(join(BASE_TR, "normalization.npy")), station_indices = station_indices, cuda = CUDA)
 
     #########################################################################
     # Split off last 20 percent
@@ -142,11 +144,13 @@ def main():
 
     #########################################################################
 
-    model = Model(time_steps = time_steps).cuda()
+    model = Model(time_steps = time_steps)
+    model = model.cpu() if not CUDA else model.cuda()
+
     if INIT_FROM_EXISTING:
        
-
-        model_base = torch.jit.load(join(BASE, INIT_MODEL_NAME, "Model_test")).cuda()
+        model_base = torch.jit.load(join(BASE, INIT_MODEL_NAME, "Model_test"))
+        model_base = model_base.cpu() if not CUDA else model_base.cuda()
         model.set(model_base)
 
     optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate, weight_decay = 1e-6)
