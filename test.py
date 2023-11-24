@@ -61,12 +61,12 @@ def main():
     Y = np.load(join(BASE_TR, "test_waves.npy"))
     T = np.load(join(BASE_TR, "training_time.npy"))
 
-    S_AA = spatial_map("AA", time_steps)
-    S_MB = spatial_map("MB", time_steps)
-    S_GD = spatial_map("GD", time_steps)
-    S_OB = spatial_map("OB", time_steps)
-    S_OB2 = spatial_map("OB2", time_steps)
-    S_OB3 = spatial_map("OB3", time_steps)
+    S_AA = spatial_map("AA")
+    S_MB = spatial_map("MB")
+    S_GD = spatial_map("GD")
+    S_OB = spatial_map("OB")
+    S_OB2 = spatial_map("OB2")
+    S_OB3 = spatial_map("OB3")
 
     station_indices = []
     if dataset_name == "AA":
